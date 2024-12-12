@@ -1,0 +1,38 @@
+<tr class="hover:bg-gray-50 cursor-pointer">
+  <td class="px-6 py-4 whitespace-nowrap">
+    <div class="flex items-center">
+      <div class="h-10 w-10 flex-shrink-0">
+        <div class="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
+          <span class="text-xl font-medium text-gray-600">{{ user.name.charAt(0) }}</span>
+        </div>
+      </div>
+      <div class="ml-4">
+        <div class="text-sm font-medium text-gray-900">{{ user.name }}</div>
+        <div class="text-sm text-gray-500">{{ user.email }}</div>
+      </div>
+    </div>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap">
+    <div class="text-sm text-gray-900">{{ user.role }}</div>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap">
+      <span
+        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full"
+        [ngClass]="{
+          'bg-green-100 text-green-800': user.status === 'Active',
+          'bg-red-100 text-red-800': user.status === 'Inactive'
+        }"
+      >
+        {{ user.status }}
+      </span>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+    {{ user.joiningDate | date:'mediumDate' }}
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+    <button class="inline-flex items-center px-3 py-1.5 bg-emerald-600 text-white hover:bg-emerald-700 rounded-md transition-colors duration-200">
+      <i class="fa-solid fa-pen-to-square text-xs"></i>
+      <span class="ml-2">Edit</span>
+    </button>
+  </td>
+</tr>
