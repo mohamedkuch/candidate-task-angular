@@ -2,6 +2,7 @@ import {Component, ElementRef, Input, ViewChild,} from '@angular/core';
 import {User} from "../../models/user.model";
 import {UsersDataService} from "../../services/users-data.service";
 import {Router} from "@angular/router";
+import {first} from "rxjs";
 
 @Component({
   selector: 'app-user-item',
@@ -18,10 +19,13 @@ export class UserItemComponent {
   ) {
   }
 
-  onEditUserClick(): void {
+  onEditUserClick(event: MouseEvent | TouchEvent): void {
+    event.stopPropagation();
     // Blur button to prevent aria-hidden focus error when modal opens
     this.editButton.nativeElement.blur();
-    this.usersDataService.editUser(this.user);
+    this.usersDataService.editUser(this.user)
+      .pipe(first())
+      .subscribe();
   }
 
   onUserClick(userId: number) {

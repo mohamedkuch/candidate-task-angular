@@ -4,6 +4,7 @@ import {UserEditComponent} from "../user-edit/user-edit.component";
 import {MatDialog} from "@angular/material/dialog";
 import {UsersDataService} from "../../services/users-data.service";
 import {ActivatedRoute} from "@angular/router";
+import {first, switchMap} from "rxjs";
 
 @Component({
   selector: 'app-user-details',
@@ -24,6 +25,14 @@ export class UserDetailsComponent {
   onEditUserClick(): void {
     // Blur button to prevent aria-hidden focus error when modal opens
     this.editButton.nativeElement.blur();
-    this.usersDataService.editUser(this.user);
+    
+    this.usersDataService.editUser(this.user).pipe(
+      first(),
+      switchMap(() => this.usersDataService.getUserById(this.user.id))
+    ).subscribe(updatedUser => {
+      if (updatedUser) {
+        this.user = updatedUser;
+      }
+    });
   }
 }

@@ -1,6 +1,6 @@
 import {Injectable,} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {filter, first, map, Observable, of,} from "rxjs";
+import {filter, first, map, Observable, of, tap,} from "rxjs";
 import {User} from "../models/user.model";
 import {UserEditComponent} from "../views/user-edit/user-edit.component";
 import {MatDialog} from "@angular/material/dialog";
@@ -43,20 +43,18 @@ export class UsersDataService {
     return storedUsers ? JSON.parse(storedUsers).map((item: any) => new User(item)) : [];
   }
 
-  editUser(user: User): void {
+  editUser(user: User): Observable<User | null> {
     const dialogRef = this.dialog.open(UserEditComponent, {
       data: user,
     });
 
-    dialogRef.afterClosed()
-      .pipe(
-        first(),
-        filter((res) => !!res),
-        map((res: any) => new User(res))
-      )
-      .subscribe((result: User) => {
-        this.store.dispatch(updateUser({updatedUser: result}));
-      });
+    return dialogRef.afterClosed().pipe(
+      filter((res) => !!res),
+      map((res: any) => new User(res)),
+      tap((result: User) => {
+        this.store.dispatch(updateUser({ updatedUser: result }));
+      })
+    );
   }
 }
 

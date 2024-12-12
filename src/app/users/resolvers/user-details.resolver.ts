@@ -13,15 +13,12 @@ export const userDetailsResolver: ResolveFn<User | null> = (route) => {
   return usersDataService.getUserById(userId).pipe(
     map(user => {
       if (!user) {
-        console.log('###### no user')
         router.navigate(['/users/not-found']);
         return null;
       }
       return user;
     }),
     catchError(() => {
-      console.log('###### catchError')
-
       router.navigate(['/users/not-found']);
       return of(null);
     })
