@@ -1,7 +1,5 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {User} from "../../models/user.model";
-import {UserEditComponent} from "../user-edit/user-edit.component";
-import {MatDialog} from "@angular/material/dialog";
 import {UsersDataService} from "../../services/users-data.service";
 import {ActivatedRoute} from "@angular/router";
 import {first, switchMap} from "rxjs";
