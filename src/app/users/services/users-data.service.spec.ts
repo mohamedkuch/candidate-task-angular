@@ -7,7 +7,7 @@ import { UsersDataService } from './users-data.service';
 import { User } from '../models/user.model';
 import { updateUser } from '../../store/users/users.actions';
 
-describe('UsersDataService', () => {
+describe('Users Data Service Test', () => {
   let service: UsersDataService;
   let httpMock: HttpTestingController;
   let dialogMock: jasmine.SpyObj<MatDialog>;
