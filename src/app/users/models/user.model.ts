@@ -2,10 +2,10 @@ export interface User {
   id: number;
   name: string;
   email: string;
-  role: string;
-  status: string;
+  role: 'Admin' | 'Manager' | 'Employee';
+  status: 'Active' | 'Inactive';
   joiningDate: Date;
-  // optional details
+  // Optional fields
   department?: string;
   location?: string;
   team?: string;

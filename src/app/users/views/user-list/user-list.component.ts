@@ -22,7 +22,7 @@ export class UserListComponent {
       id: 2,
       name: 'Jane Smith',
       email: 'jane@example.com',
-      role: 'User',
+      role: 'Manager',
       status: 'Active',
       joiningDate: new Date('2024-02-01'),
       department: 'Marketing',

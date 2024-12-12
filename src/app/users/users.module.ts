@@ -6,6 +6,7 @@ import {UserEditComponent} from "./views/user-edit/user-edit.component";
 import {UserDetailsComponent} from "./views/user-details/user-details.component";
 import {FormsModule} from "@angular/forms";
 import {UserItemComponent} from "./components/user-item/user-item.component";
+import { MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {UserItemComponent} from "./components/user-item/user-item.component";
   imports: [
     CommonModule,
     FormsModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    MatDialogModule
   ]
 })
 export class UsersModule {

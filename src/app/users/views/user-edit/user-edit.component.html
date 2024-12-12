@@ -1,1 +1,156 @@
-<p>user-edit works!</p>
+<div class="p-6 max-w-2xl">
+  <h2 class="text-2xl font-bold mb-4 text-gray-800">Edit User Details</h2>
+
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" class="space-y-4">
+    <!-- Basic Info Section -->
+    <div class="grid grid-cols-2 gap-4">
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Name</label>
+        <input
+          type="text"
+          name="name"
+          [(ngModel)]="userData.name"
+          required
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        >
+      </div>
+
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Email</label>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="userData.email"
+          required
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        >
+      </div>
+    </div>
+
+    <!-- Role and Status -->
+    <div class="grid grid-cols-2 gap-4">
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Role</label>
+        <select
+          name="role"
+          [(ngModel)]="userData.role"
+          required
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        >
+          <option value="Admin">Admin</option>
+          <option value="Manager">Manager</option>
+          <option value="Employee">Employee</option>
+        </select>
+      </div>
+
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Status</label>
+        <select
+          name="status"
+          [(ngModel)]="userData.status"
+          required
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        >
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Optional Details -->
+    <div class="grid grid-cols-2 gap-4">
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Department</label>
+        <input
+          type="text"
+          name="department"
+          [(ngModel)]="userData.department"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        >
+      </div>
+
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Location</label>
+        <input
+          type="text"
+          name="location"
+          [(ngModel)]="userData.location"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        >
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Team</label>
+        <input
+          type="text"
+          name="team"
+          [(ngModel)]="userData.team"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        >
+      </div>
+
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Manager</label>
+        <input
+          type="text"
+          name="manager"
+          [(ngModel)]="userData.manager"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        >
+      </div>
+    </div>
+
+    <!-- Numbers Section -->
+    <div class="grid grid-cols-3 gap-4">
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Projects</label>
+        <input
+          type="number"
+          name="projects"
+          [(ngModel)]="userData.projects"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        >
+      </div>
+
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Tasks</label>
+        <input
+          type="number"
+          name="tasks"
+          [(ngModel)]="userData.tasks"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        >
+      </div>
+
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Team Members</label>
+        <input
+          type="number"
+          name="teamMembers"
+          [(ngModel)]="userData.teamMembers"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        >
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex justify-end space-x-3 pt-4">
+      <button
+        type="button"
+        (click)="onCancel()"
+        class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+      >
+        Cancel
+      </button>
+      <button
+        type="submit"
+        [disabled]="!userForm.form.valid"
+        class="px-4 py-2 text-sm font-medium text-white bg-emerald-600 rounded-md hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:opacity-50"
+      >
+        Save Changes
+      </button>
+    </div>
+  </form>
+</div>

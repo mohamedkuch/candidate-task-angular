@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {User} from "../../models/user.model";
+import {UserEditComponent} from "../user-edit/user-edit.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-user-details',
@@ -22,10 +24,21 @@ export class UserDetailsComponent {
   };
 
 
-  constructor() {
+  constructor(
+    private dialog: MatDialog,
+  ) {
   }
 
+  onEditUserClick(editButton: HTMLButtonElement): void {
+    // Blur button to prevent aria-hidden focus error when modal opens
+    editButton.blur();
 
-  goBack() {
+    const dialogRef = this.dialog.open(UserEditComponent, {
+      data: this.user
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Modal closed with result:', result);
+    });
   }
 }
