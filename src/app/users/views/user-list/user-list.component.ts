@@ -14,7 +14,9 @@ export class UserListComponent {
       email: 'john@example.com',
       role: 'Admin',
       status: 'Active',
-      joiningDate: new Date('2024-01-15')
+      joiningDate: new Date('2024-01-15'),
+      department: 'Web',
+      location: 'Germany'
     },
     {
       id: 2,
@@ -22,7 +24,9 @@ export class UserListComponent {
       email: 'jane@example.com',
       role: 'User',
       status: 'Active',
-      joiningDate: new Date('2024-02-01')
+      joiningDate: new Date('2024-02-01'),
+      department: 'Marketing',
+      location: 'USA'
     },
   ];
 

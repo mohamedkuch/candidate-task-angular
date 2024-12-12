@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {User} from "../../models/user.model";
 
 @Component({
   selector: 'app-user-details',
@@ -6,5 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './user-details.component.scss'
 })
 export class UserDetailsComponent {
+  user: User = {
+    id: 1,
+    name: 'John Doe',
+    email: 'john@example.com',
+    role: 'Admin',
+    status: 'Active',
+    joiningDate: new Date('2024-01-15'),
+    department: 'Web',
+    location: 'Germany'
+  };
 
+
+  constructor() {
+  }
+
+
+  goBack() {
+  }
 }

@@ -5,4 +5,6 @@ export interface User {
   role: string;
   status: string;
   joiningDate: Date;
+  department: string;
+  location: string;
 }
