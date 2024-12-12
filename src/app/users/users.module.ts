@@ -18,6 +18,7 @@ import {StoreModule} from "@ngrx/store";
 import {usersReducer} from "../store/users/users.reducer";
 import {UsersEffects} from "../store/users/users.effect";
 import {UsersDataService} from "./services/users-data.service";
+import {UserNotFoundComponent} from "./views/user-not-found/user-not-found.component";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {UsersDataService} from "./services/users-data.service";
     UserListComponent,
     UserEditComponent,
     UserDetailsComponent,
-    UserItemComponent
+    UserItemComponent,
+    UserNotFoundComponent
   ],
   imports: [
     CommonModule,

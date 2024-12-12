@@ -28,6 +28,12 @@ export class UsersDataService {
     }
   }
 
+  getUserById(id: number): Observable<User | null> {
+    const storedUsers = this.getUsersFromLocalStorage();
+    const user = storedUsers.find(u => u.id === id);
+    return of(user || null);
+  }
+
   storeUsers(users: User[]): void {
     localStorage.setItem(this.localStorageKey, JSON.stringify(users));
   }

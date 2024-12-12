@@ -3,6 +3,7 @@ import {User} from "../../models/user.model";
 import {UserEditComponent} from "../user-edit/user-edit.component";
 import {MatDialog} from "@angular/material/dialog";
 import {UsersDataService} from "../../services/users-data.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-user-details',
@@ -11,25 +12,13 @@ import {UsersDataService} from "../../services/users-data.service";
 })
 export class UserDetailsComponent {
   @ViewChild('editButton', {read: ElementRef}) editButton!: ElementRef;
-
-  user: User = {
-    id: 1,
-    name: 'John Doe',
-    email: 'john@example.com',
-    role: 'Admin',
-    status: 'Active',
-    joiningDate: new Date('2024-01-15'),
-    department: 'Web',
-    location: 'Germany',
-    projects: 10,
-    teamMembers: 55,
-    team: 'SUI Team'
-  };
-
+  user!: User;
 
   constructor(
-    private usersDataService: UsersDataService
+    private usersDataService: UsersDataService,
+    private activatedRoute: ActivatedRoute
   ) {
+    this.user = this.activatedRoute.snapshot.data['user'];
   }
 
   onEditUserClick(): void {
