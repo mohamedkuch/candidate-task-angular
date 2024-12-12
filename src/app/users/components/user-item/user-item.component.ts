@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, ViewChild,} from '@angular/core';
 import {User} from "../../models/user.model";
 import {UserEditComponent} from "../../views/user-edit/user-edit.component";
 import {MatDialog} from "@angular/material/dialog";
@@ -9,6 +9,7 @@ import {MatDialog} from "@angular/material/dialog";
   styleUrl: './user-item.component.scss'
 })
 export class UserItemComponent {
+  @ViewChild('editButton', { read: ElementRef }) editButton!: ElementRef;
   @Input() user!: User;
 
   constructor(
@@ -16,9 +17,9 @@ export class UserItemComponent {
   ) {
   }
 
-  onEditUserClick(editButton: HTMLButtonElement): void {
+  onEditUserClick(): void {
     // Blur button to prevent aria-hidden focus error when modal opens
-    editButton.blur();
+    this.editButton.nativeElement.blur();
 
     const dialogRef = this.dialog.open(UserEditComponent, {
       data: this.user

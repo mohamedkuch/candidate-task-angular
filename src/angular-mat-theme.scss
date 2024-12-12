@@ -56,9 +56,9 @@ $custom-gray-palette: (
   )
 );
 
-// Define the palettes
-$primary-palette: mat.define-palette($custom-gray-palette, 700, 300, 900);
-$accent-palette: mat.define-palette($custom-emerald-palette, 500, 300, 700);
+// Define the palettes - Switch primary to emerald
+$primary-palette: mat.define-palette($custom-emerald-palette, 600); // Use emerald as primary
+$accent-palette: mat.define-palette($custom-gray-palette, 700);    // Use gray as accent
 $warn-palette: mat.define-palette(mat.$red-palette);
 
 // Create the theme object
@@ -78,12 +78,3 @@ $custom-theme: mat.define-light-theme((
 body {
   margin: 0;
 }
-
-// Optional: Custom Material component styles
-.mat-mdc-raised-button.mat-accent {
-  // Custom styles for raised accent buttons if needed
-  &:hover {
-    background-color: #059669; // emerald-600
-  }
-}
-
