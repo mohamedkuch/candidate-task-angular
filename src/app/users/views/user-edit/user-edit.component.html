@@ -4,135 +4,92 @@
   <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" class="space-y-4">
     <!-- Basic Info Section -->
     <div class="grid grid-cols-2 gap-4">
-      <div class="space-y-2">
-        <label class="block text-sm font-medium text-gray-700">Name</label>
-        <input
-          type="text"
-          name="name"
-          [(ngModel)]="userData.name"
-          required
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        >
-      </div>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput name="name" [(ngModel)]="userData.name" required>
+      </mat-form-field>
 
-      <div class="space-y-2">
-        <label class="block text-sm font-medium text-gray-700">Email</label>
-        <input
-          type="email"
-          name="email"
-          [(ngModel)]="userData.email"
-          required
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        >
-      </div>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="email" name="email" [(ngModel)]="userData.email" required>
+      </mat-form-field>
     </div>
 
     <!-- Role and Status -->
     <div class="grid grid-cols-2 gap-4">
-      <div class="space-y-2">
-        <label class="block text-sm font-medium text-gray-700">Role</label>
-        <select
-          name="role"
-          [(ngModel)]="userData.role"
-          required
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        >
-          <option value="Admin">Admin</option>
-          <option value="Manager">Manager</option>
-          <option value="Employee">Employee</option>
-        </select>
-      </div>
+      <mat-form-field>
+        <mat-label>Role</mat-label>
+        <mat-select name="role" [(ngModel)]="userData.role" required>
+          <mat-option value="Admin">Admin</mat-option>
+          <mat-option value="Manager">Manager</mat-option>
+          <mat-option value="Employee">Employee</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-      <div class="space-y-2">
-        <label class="block text-sm font-medium text-gray-700">Status</label>
-        <select
-          name="status"
-          [(ngModel)]="userData.status"
-          required
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        >
-          <option value="Active">Active</option>
-          <option value="Inactive">Inactive</option>
-        </select>
-      </div>
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select name="status" [(ngModel)]="userData.status" required>
+          <mat-option value="Active">Active</mat-option>
+          <mat-option value="Inactive">Inactive</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <mat-form-field>
+        <mat-label>Schedule</mat-label>
+        <input matInput name="schedule" [(ngModel)]="userData.schedule" placeholder="Enter schedule">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Joining Date</mat-label>
+        <input matInput [matDatepicker]="picker" name="joiningDate" [(ngModel)]="userData.joiningDate" required>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
     </div>
 
     <!-- Optional Details -->
     <div class="grid grid-cols-2 gap-4">
-      <div class="space-y-2">
-        <label class="block text-sm font-medium text-gray-700">Department</label>
-        <input
-          type="text"
-          name="department"
-          [(ngModel)]="userData.department"
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        >
-      </div>
+      <mat-form-field>
+        <mat-label>Department</mat-label>
+        <input matInput name="department" [(ngModel)]="userData.department">
+      </mat-form-field>
 
-      <div class="space-y-2">
-        <label class="block text-sm font-medium text-gray-700">Location</label>
-        <input
-          type="text"
-          name="location"
-          [(ngModel)]="userData.location"
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        >
-      </div>
+      <mat-form-field>
+        <mat-label>Location</mat-label>
+        <input matInput name="location" [(ngModel)]="userData.location">
+      </mat-form-field>
     </div>
 
     <div class="grid grid-cols-2 gap-4">
-      <div class="space-y-2">
-        <label class="block text-sm font-medium text-gray-700">Team</label>
-        <input
-          type="text"
-          name="team"
-          [(ngModel)]="userData.team"
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        >
-      </div>
+      <mat-form-field>
+        <mat-label>Team</mat-label>
+        <input matInput name="team" [(ngModel)]="userData.team">
+      </mat-form-field>
 
-      <div class="space-y-2">
-        <label class="block text-sm font-medium text-gray-700">Manager</label>
-        <input
-          type="text"
-          name="manager"
-          [(ngModel)]="userData.manager"
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        >
-      </div>
+      <mat-form-field>
+        <mat-label>Manager</mat-label>
+        <input matInput name="manager" [(ngModel)]="userData.manager">
+      </mat-form-field>
     </div>
 
     <!-- Numbers Section -->
     <div class="grid grid-cols-3 gap-4">
-      <div class="space-y-2">
-        <label class="block text-sm font-medium text-gray-700">Projects</label>
-        <input
-          type="number"
-          name="projects"
-          [(ngModel)]="userData.projects"
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        >
-      </div>
+      <mat-form-field>
+        <mat-label>Projects</mat-label>
+        <input matInput type="number" name="projects" [(ngModel)]="userData.projects">
+      </mat-form-field>
 
-      <div class="space-y-2">
-        <label class="block text-sm font-medium text-gray-700">Tasks</label>
-        <input
-          type="number"
-          name="tasks"
-          [(ngModel)]="userData.tasks"
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        >
-      </div>
+      <mat-form-field>
+        <mat-label>Tasks</mat-label>
+        <input matInput type="number" name="tasks" [(ngModel)]="userData.tasks">
+      </mat-form-field>
 
-      <div class="space-y-2">
-        <label class="block text-sm font-medium text-gray-700">Team Members</label>
-        <input
-          type="number"
-          name="teamMembers"
-          [(ngModel)]="userData.teamMembers"
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        >
-      </div>
+      <mat-form-field>
+        <mat-label>Team Members</mat-label>
+        <input matInput type="number" name="teamMembers" [(ngModel)]="userData.teamMembers">
+      </mat-form-field>
     </div>
 
     <!-- Action Buttons -->
@@ -147,10 +104,13 @@
       <button
         type="submit"
         [disabled]="!userForm.form.valid"
-        class="px-4 py-2 text-sm font-medium text-white bg-emerald-600 rounded-md hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:opacity-50"
+        class="px-4 py-2 text-sm font-medium text-white bg-emerald-600 rounded-md hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:bg-gray-500"
       >
         Save Changes
       </button>
     </div>
   </form>
 </div>
+
+
+
