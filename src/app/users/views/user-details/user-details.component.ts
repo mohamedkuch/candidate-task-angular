@@ -2,6 +2,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {User} from "../../models/user.model";
 import {UserEditComponent} from "../user-edit/user-edit.component";
 import {MatDialog} from "@angular/material/dialog";
+import {UsersDataService} from "../../services/users-data.service";
 
 @Component({
   selector: 'app-user-details',
@@ -9,7 +10,7 @@ import {MatDialog} from "@angular/material/dialog";
   styleUrl: './user-details.component.scss'
 })
 export class UserDetailsComponent {
-  @ViewChild('editButton', { read: ElementRef }) editButton!: ElementRef;
+  @ViewChild('editButton', {read: ElementRef}) editButton!: ElementRef;
 
   user: User = {
     id: 1,
@@ -27,20 +28,13 @@ export class UserDetailsComponent {
 
 
   constructor(
-    private dialog: MatDialog,
+    private usersDataService: UsersDataService
   ) {
   }
 
   onEditUserClick(): void {
     // Blur button to prevent aria-hidden focus error when modal opens
     this.editButton.nativeElement.blur();
-
-    const dialogRef = this.dialog.open(UserEditComponent, {
-      data: this.user
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Modal closed with result:', result);
-    });
+    this.usersDataService.editUser(this.user);
   }
 }

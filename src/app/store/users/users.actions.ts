@@ -14,3 +14,7 @@ export const updateSearchTerm = createAction(
   '[Users List] Update Search Term',
   props<{ searchTerm: string }>()
 );
+export const updateUser = createAction(
+  '[Users List] Update User',
+  props<{ updatedUser: User }>() // Payload with the updated user
+);

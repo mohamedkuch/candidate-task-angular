@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {catchError, map, of, switchMap, tap} from 'rxjs';
-import {loadUsers, loadUsersFailure, loadUsersSuccess} from './users.actions';
+import {loadUsers, loadUsersFailure, loadUsersSuccess, updateUser} from './users.actions';
 import {UsersDataService} from '../../users/services/users-data.service';
 
 @Injectable()
@@ -37,6 +37,22 @@ export class UsersEffects {
         ofType(loadUsersSuccess), // Trigger when `loadUsersSuccess` action is dispatched
         tap(({users}) => {
           this.usersDataService.storeUsers(users); // Save users to localStorage
+        })
+      );
+    },
+    {dispatch: false} // No need to dispatch another action
+  );
+
+  updateUser$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(updateUser), // Trigger when `updateUser` action is dispatched
+        tap(({updatedUser}) => {
+          const users = this.usersDataService.getUsersFromLocalStorage();
+          const updatedUsers = users.map((user) =>
+            user.id === updatedUser.id ? updatedUser : user
+          );
+          this.usersDataService.storeUsers(updatedUsers);
         })
       );
     },

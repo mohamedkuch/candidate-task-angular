@@ -1,14 +1,20 @@
-import {Injectable} from '@angular/core';
+import {Injectable,} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {map, Observable, of} from "rxjs";
+import {filter, first, map, Observable, of,} from "rxjs";
 import {User} from "../models/user.model";
+import {UserEditComponent} from "../views/user-edit/user-edit.component";
+import {MatDialog} from "@angular/material/dialog";
+import {updateUser} from "../../store/users/users.actions";
+import {Store} from "@ngrx/store";
 
 @Injectable()
 export class UsersDataService {
   private usersUrl = 'assets/data/users.json';
   private localStorageKey = 'usersData';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private dialog: MatDialog,
+              private store: Store) {
   }
 
   getUsers(): Observable<User[]> {
@@ -29,6 +35,22 @@ export class UsersDataService {
   getUsersFromLocalStorage(): User[] {
     const storedUsers = localStorage.getItem(this.localStorageKey);
     return storedUsers ? JSON.parse(storedUsers).map((item: any) => new User(item)) : [];
+  }
+
+  editUser(user: User): void {
+    const dialogRef = this.dialog.open(UserEditComponent, {
+      data: user,
+    });
+
+    dialogRef.afterClosed()
+      .pipe(
+        first(),
+        filter((res) => !!res),
+        map((res: any) => new User(res))
+      )
+      .subscribe((result: User) => {
+        this.store.dispatch(updateUser({updatedUser: result}));
+      });
   }
 }
 
