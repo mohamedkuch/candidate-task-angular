@@ -3,10 +3,14 @@ import {User} from "../../users/models/user.model";
 
 export const loadUsers = createAction('[User List] Load Users');
 export const loadUsersSuccess = createAction(
-  '[User List] Load Users Success',
+  '[Users List] Load Users Success',
   props<{ users: User[] }>()
 );
 export const loadUsersFailure = createAction(
-  '[User List] Load Users Failure',
+  '[Users List] Load Users Failure',
   props<{ error: string }>()
+);
+export const updateSearchTerm = createAction(
+  '[Users List] Update Search Term',
+  props<{ searchTerm: string }>()
 );

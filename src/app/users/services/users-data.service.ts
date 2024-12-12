@@ -3,9 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {User} from "../models/user.model";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UsersDataService {
   private usersUrl = 'assets/data/users.json';
 

@@ -17,6 +17,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {StoreModule} from "@ngrx/store";
 import {usersReducer} from "../store/users/users.reducer";
 import {UsersEffects} from "../store/users/users.effect";
+import {UsersDataService} from "./services/users-data.service";
 
 
 @NgModule({
@@ -40,6 +41,9 @@ import {UsersEffects} from "../store/users/users.effect";
     StoreModule.forFeature('users', usersReducer),
     EffectsModule.forFeature([UsersEffects]),
   ],
+  providers: [
+    UsersDataService
+  ]
 })
 export class UsersModule {
 }
