@@ -1,65 +1,142 @@
-## Senior Frontend Engineer Assessment Task
+# Employee Management Application
 
-### **Overview**
+A modern Angular application for managing employee data, built with Angular, NgRx, and RxJS. This application demonstrates best practices in state management, reactive programming, and component architecture.
 
-Create an employee management application using Angular, RxJS, and NgRx. The application should allow users to browse a list of
-users, view user details, and edit user details. The goal is to demonstrate your expertise in Angular architecture,
-state management, reactive programming, and writing unit tests.
+## Features
 
-### **Project Requirements**
+- **Users List View**
+  - Display users with filterable list
+  - Quick search by name, email, or role
+  - Status indicators for active/inactive users
 
-**Application Features**
+- **USer Details View**
+  - Comprehensive user information display
+  - Edit functionality with form validation
+  - Real-time updates across views
 
-- **User List:**
-  - Display a list of employees with basic information (name, email, role, and status).
-    - You can use mock data or fetch data from a mock API.
-  - Include a way to filter users, e.g. by name, email, or status.
+- **State Management**
+  - Centralized state management with NgRx
+  - Persistent storage using localStorage
+  - Optimistic updates for better UX
 
-- **User Details:**
-  - Display detailed information about a selected user (name, email, role, status, joining date).
-  - Include a way to edit the user details.
+## Technology Stack
 
-**State Management with NgRx**
+- Angular 17
+- NgRx for state management
+- RxJS for reactive programming
+- Angular Material UI components
+- SCSS for styling
+- Jasmine & Karma for testing
 
-- Implement global state management for users.
-- Create actions, reducers, and selectors for managing user state.
+## Prerequisites
 
-**Reactive Programming with RxJS**
+- Node.js (v18 or higher)
+- npm (v9 or higher)
+- Angular CLI (v17 or higher)
 
-- Use RxJS operators to manage state, transform data streams, and handle asynchronous operations.
+## Installation
 
-**Unit Testing**
+1. Clone the repository:
+```bash
+git clone `https://github.com/Userlane/candidate-task-angular.git`
+cd candidate-task-angular
+```
 
-- Use Jasmine and Karma to write a few unit tests.
+2. Install dependencies:
+```bash
+npm install
+```
 
-**Styling**
+3. Start the development server:
+```bash
+ng serve
+```
 
-- Use SCSS for basic styling.
-- You may use Angular Material or any other UI library for a polished UI.
+4. Open your browser and navigate to `http://localhost:4200`
 
-**Documentation**
+## Project Structure
 
-- Provide a README file with instructions on how to set up and run the application.
+```
+src/
+├── app/
+│   ├── store/           # NgRx store configuration
+│   │   └── users/       # User state management
+│   │       ├── users.actions.ts    # Action definitions
+│   │       ├── users.effect.ts     # Side effects handling
+│   │       ├── users.reducer.ts    # State updates logic
+│   │       └── users.selector.ts   # State selection
+│   │
+│   ├── users/          # Users feature module
+│   │   ├── components/  # Reusable user components
+│   │   ├── models/      # User-related interfaces and types
+│   │   ├── resolvers/   # Route resolvers
+│   │   ├── services/    # User data services
+│   │   ├── views/       # User page components
+│   │   ├── users.module.ts          # Users module definition
+│   │   └── users-routing.module.ts  # Users routing configuration
+│   │
+│   ├── app.component.html   # Root component template
+│   ├── app.component.scss   # Root component styles
+│   ├── app.component.ts     # Root component logic
+│   ├── app.module.ts        # Root module definition
+│   └── app-routing.module.ts# Root routing configuration
+```
 
-### **Optional Features**
+## State Management
 
-- **Persistent Storage:** Use local storage or session storage to persist state across page reloads.
+The application uses NgRx for state management with the following features:
 
-### **Submission Instructions**
+- Action-based state updates
+- Selector-based view updates
+- Effects for side effects
+- Local storage persistence
 
-1. Fork the repository.
-2. Commit your code regularly to show your progress.
-3. Ensure that the application runs without errors.
-4. Submit the GitHub repository link with your final submission.
+## Testing
 
-### **Evaluation Criteria**
+Run the test suite:
 
-- **Code Quality:** Clean, readable, and maintainable code.
-- **Application Structure:** Proper use of Angular modules, components, services, and NgRx.
-- **State Management:** Effective use of NgRx for global state management.
-- **Reactive Programming:** Demonstration of RxJS for handling data streams and asynchronous operations.
-- **Functionality:** Implementation of all required features and optional features.
-- **Testing:** Coverage and quality of tests.
-- **User Experience:** Aesthetic and functional UI/UX design. Responsive UI is not necessary in this task.
+```bash
+ng test
+```
 
-Good luck! We look forward to reviewing your submission.
+The application includes unit tests for:
+- Components
+- Services
+- Store (reducers, selectors, effects)
+
+## Build
+
+Generate a production build:
+
+```bash
+ng build --configuration production
+```
+
+The build artifacts will be stored in the `dist/` directory.
+
+## Development Workflow
+
+1. **Starting Development**
+  - Run `ng serve` for a dev server
+  - Make changes and see live updates
+
+2. **Creating New Components**
+   ```bash
+   ng generate component [path]
+   ```
+
+3. **Working with State**
+  - Add new user actions in `store/users/users.actions.ts`
+  - Update user reducers in `store/users/users.reducer.ts`
+  - Create user selectors in `store/users/users.selectors.ts`
+  - Add a new user effect in `store/users/users.effect.ts`
+
+4. **Running Tests**
+  - Unit tests: `ng test`
+  - Coverage report: `ng test --code-coverage`
+
+## Additional Information
+
+- The application uses mock data stored in `assets/data/users.json`
+- Local storage is used to persist state across page reloads
+- The UI is styled using Tailwind, Angular Material UI and custom SCSS
