@@ -15,7 +15,10 @@ export class UserDetailsComponent {
     status: 'Active',
     joiningDate: new Date('2024-01-15'),
     department: 'Web',
-    location: 'Germany'
+    location: 'Germany',
+    projects: 10,
+    teamMembers: 55,
+    team: 'SUI Team'
   };
 
 
